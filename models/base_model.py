@@ -6,8 +6,10 @@ from datetime import datetime
 class BaseModel:
     """ Base class for other class to inherit from it"""
 
-    def __init__(self):
+    def __init__(self, **argv):
         """ Initialize instantce obj"""
+        for k in argv:
+            self.k = argv[k]
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
@@ -16,7 +18,6 @@ class BaseModel:
         """overwrite str method"""
         s = "[" + type(self).__name__ + "] (" + self.id + ") "
         s += str(self.__dict__)
-        print(s)
         return(s)
 
     def save(self):
@@ -26,4 +27,5 @@ class BaseModel:
     def to_dict(self):
         """ return key: value of instance __dict__ """
         self.created_at = str(self.created_at.isoformat())
+        self.updated_at = str(self.updated_at.isoformat())
         return self.__dict__
