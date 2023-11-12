@@ -8,13 +8,16 @@ class BaseModel:
 
     def __init__(self):
         """ Initialize instantce obj"""
-        self.id = uuid.uuid4()
-        created_at = datetime.now()
-        updated_at = datetime.now()
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def __str__(self):
         """overwrite str method"""
-        print(self.className, " (", self.id, ") ", self.__dict__)
+        s = "[" + type(self).__name__ + "] (" + self.id + ") "
+        s += str(self.__dict__)
+        print(s)
+        return(s)
 
     def save(self):
         """ Save changes and update time"""
@@ -22,6 +25,5 @@ class BaseModel:
 
     def to_dict(self):
         """ return key: value of instance __dict__ """
-        self.__dict__.__class__ = self.className
         self.created_at = str(self.created_at.isoformat())
         return self.__dict__
