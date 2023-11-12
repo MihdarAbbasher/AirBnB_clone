@@ -3,13 +3,15 @@
 
 import cmd
 
+
 class My_cmd(cmd.Cmd):
     """interactive console cmd """
-    
 
     prompt = "(hbnb) "
+
     def do_create_user(slef, line):
-        print ("create user")
+        """create new user"""
+        print("create user")
 
     def do_EOF(self, line):
         """exit from sonsole"""
@@ -25,6 +27,7 @@ class My_cmd(cmd.Cmd):
     def do_quit(self, line):
         """ exit from console"""
         return True
+
 
 if __name__ == '__main__':
     My_cmd().cmdloop()
