@@ -1,11 +1,12 @@
 """ defines all common attributes/methods for other classes """
 import uuid
+from datetime import datetime
 
 
 class BaseModel:
     """ Base class for other class to inherit from it"""
 
-    def __init__():
+    def __init__(self):
         """ Initialize instantce obj"""
         self.id = uuid.uuid4()
         created_at = datetime.now()
