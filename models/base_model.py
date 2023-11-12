@@ -18,7 +18,7 @@ class BaseModel:
         """overwrite str method"""
         s = "[" + type(self).__name__ + "] (" + self.id + ") "
         s += str(self.__dict__)
-        return(s)
+        return (s)
 
     def save(self):
         """ Save changes and update time"""

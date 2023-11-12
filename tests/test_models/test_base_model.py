@@ -7,8 +7,6 @@ BaseModel = base_model.BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
-
-
     """test base model class"""
     def test_init(self):
         """test init func."""
