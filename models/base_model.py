@@ -1,4 +1,4 @@
-# defines all common attributes/methods for other classes
+""" defines all common attributes/methods for other classes """
 import uuid
 
 class BaseModel:
