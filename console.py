@@ -4,7 +4,7 @@
 import cmd
 
 
-class My_cmd(cmd.Cmd):
+class HBNBCommand(cmd.Cmd):
     """interactive console cmd """
 
     prompt = "(hbnb) "
@@ -28,6 +28,11 @@ class My_cmd(cmd.Cmd):
         """ exit from console"""
         return True
 
+    def emptyline(self):
+        """Override defaults of`empty line & return`.
+        """
+        pass
+
 
 if __name__ == '__main__':
-    My_cmd().cmdloop()
+    HBNBCommand().cmdloop()
