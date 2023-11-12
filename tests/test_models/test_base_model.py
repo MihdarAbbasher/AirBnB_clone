@@ -13,6 +13,12 @@ class TestBaseModel(unittest.TestCase):
         s = base_model.BaseModel
         self.assertEqual(s, (BaseModel))
 
+    def test_none(self):
+        """test none func."""
+        s = base_model.BaseModel
+        s.name = "newName"
+        self.assertEqual(s.name, "newName")
+
 
 if __name__ == '__main__':
     unittest.main()
