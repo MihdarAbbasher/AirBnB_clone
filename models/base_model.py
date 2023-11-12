@@ -1,6 +1,7 @@
 """ defines all common attributes/methods for other classes """
 import uuid
 
+
 class BaseModel:
     """ Base class for other class to inherit from it"""
 
@@ -12,7 +13,7 @@ class BaseModel:
 
     def __str__(self):
         """overwrite str method"""
-        print (self.className, " (", self.id, ") ", self.__dict__)
+        print(self.className, " (", self.id, ") ", self.__dict__)
 
     def save(self):
         """ Save changes and update time"""
