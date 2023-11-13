@@ -1,6 +1,7 @@
 """ defines all common attributes/methods for other classes """
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -34,7 +35,7 @@ class BaseModel:
     def to_dict(self):
         """ return key: value of instance __dict__ """
         myDic = {**self.__dict__}
-        myDic.created_at = str(self.created_at.isoformat())
-        myDic.updated_at = str(self.updated_at.isoformat())
-        myDic.__class__ = type(self).__name__
+        myDic['created_at'] = str(self.created_at.isoformat())
+        myDic['updated_at'] = str(self.updated_at.isoformat())
+        myDic['__class__'] = type(self).__name__
         return myDic
