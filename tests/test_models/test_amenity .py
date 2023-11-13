@@ -1,18 +1,18 @@
 """Test base model module """
 import unittest
-from models.base_model import BaseModel
+from models.amenity import Amenity
 
 
 class TestBaseModel(unittest.TestCase):
     """test base model class"""
     def test_init(self):
         """test init func."""
-        s = BaseModel()
-        self.assertIsInstance(s, (BaseModel))
+        s = Amenity()
+        self.assertIsInstance(s, (Amenity))
 
     def test_none(self):
         """test none func."""
-        s = BaseModel()
+        s = Amenity()
         s.name = "newName"
         self.assertEqual(s.name, "newName")
 

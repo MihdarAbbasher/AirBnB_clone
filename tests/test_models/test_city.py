@@ -1,18 +1,18 @@
 """Test base model module """
 import unittest
-from models.base_model import BaseModel
+from models.city import City
 
 
-class TestBaseModel(unittest.TestCase):
+class TestCity(unittest.TestCase):
     """test base model class"""
     def test_init(self):
         """test init func."""
-        s = BaseModel()
-        self.assertIsInstance(s, (BaseModel))
+        s = City()
+        self.assertIsInstance(s, (City))
 
     def test_none(self):
         """test none func."""
-        s = BaseModel()
+        s = City()
         s.name = "newName"
         self.assertEqual(s.name, "newName")
 

@@ -1,18 +1,18 @@
 """Test base model module """
 import unittest
-from models.base_model import BaseModel
+from models.review import Review
 
 
-class TestBaseModel(unittest.TestCase):
+class TestReview(unittest.TestCase):
     """test base model class"""
     def test_init(self):
         """test init func."""
-        s = BaseModel()
-        self.assertIsInstance(s, (BaseModel))
+        s = Review()
+        self.assertIsInstance(s, (Review))
 
     def test_none(self):
         """test none func."""
-        s = BaseModel()
+        s = Review()
         s.name = "newName"
         self.assertEqual(s.name, "newName")
 
