@@ -9,17 +9,18 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """ Initialize instantce obj"""
+        if len(kwargs) > 0:
+            for k in kwargs:
+                v = kwargs[k]
+                if k == "created_at" or k == "updated_at":
+                    v = datetime.fromisoformat(v)
+                elif k == "__class__":
+                    continue
+                setattr(self, k, v)
+            return
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        if len(kwargs) < 1:
-            return
-        for k, v in kwargs:
-            if k == "created_at" or k == "updated_at":
-                v = datetime.fromisoformat(v)
-            elif k == "__class__":
-                continue
-            setattr(self, k, v)
         models.storage.new(self)
 
     def __str__(self):
