@@ -12,7 +12,7 @@ class FileStorage:
 
     def all(self):
         """return the dict"""
-        return __objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """set in __objects"""
@@ -45,6 +45,6 @@ class FileStorage:
                 if deserialized is None:
                     return
 
-                __objects = {
+                FileStorage.__objects = {
                     k: my_classes[k.split('.')[0]](**v)
                     for k, v in deserialized.items()}
