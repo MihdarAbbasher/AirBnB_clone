@@ -3,6 +3,7 @@
 import json
 import os
 
+
 class FileStorage:
     """class for serialization and deserialization"""
     __file_path = "file.json"
@@ -22,12 +23,13 @@ class FileStorage:
         serializes __objects to the JSON file (path: __file_path)
         """
         with open(FileStorage.__file_path, 'w') as myfile:
-            json.dump(
-                {k: v.to_dict() for k, v in FileStorage.__objects.items()}, myfile)
+            values = FileStorage.__objects.items()
+            json.dump({k: v.to_dict() for k, v in values}, myfile)
 
     def reload(self):
         """
-        deserializes the JSON file to __objects dict, if the JSON file is exist"""
+        deserializes the JSON file to __objects dict,
+        if the JSON file is exist"""
         my_classes = {'BaseModel': BaseModel}
 
         if os.path.exists(FileStorage.__file_path):
