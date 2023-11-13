@@ -5,7 +5,6 @@ from models.base_model import BaseModel
 
 class TestBaseModel(unittest.TestCase):
     """test base model class"""
-
     def test_init(self):
         """test init func."""
         s = BaseModel()
