@@ -29,7 +29,7 @@ class HBNBCommand(cmd.Cmd):
         """exit from sonsole"""
         return True
 
-    def do_EOF(self, line):
+    def do_show(self, line):
         """exit from sonsole"""
         if not line:
             print("** class name missing **")
