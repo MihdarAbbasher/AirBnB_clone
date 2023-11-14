@@ -8,10 +8,20 @@ class HBNBCommand(cmd.Cmd):
     """interactive console cmd """
 
     prompt = "(hbnb) "
+    myInstances = ["BaseModel", "User"]
 
-    def do_create_user(slef, line):
-        """create new user"""
-        print("create user")
+    def do_create(slef, line):
+        """create new instance"""
+        if not line:
+            print("** class name missing **")
+            return
+        myClass = line.split(" ")[0]
+        if myClass not in HBNBCommand.myInstances:
+            print("** class doesn't exist **")
+            return
+        print(myClass)
+        """newIns = myClass()
+        print("class: {}, id: {}".format(myClass, newIns.id))"""
 
     def do_EOF(self, line):
         """exit from sonsole"""
