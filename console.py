@@ -6,7 +6,6 @@ from models.base_model import BaseModel
 from models.user import User
 from models.engine.file_storage import FileStorage
 
-
 class HBNBCommand(cmd.Cmd):
     """interactive console cmd """
 
@@ -41,8 +40,14 @@ class HBNBCommand(cmd.Cmd):
         if len(myline) < 2:
             print("** instance id missing **")
             return
-        for k in FileStorage.__objects:
-            print("key: {}".format(k))
+        items = FileStorage().all()
+        key = myline[0] + "." + myline[1]
+        print(key)
+        for k in items:
+            if key == k:
+                print("found")
+                break
+        print("out loop")
 
     def do_help(self, line):
         """show general or specific help"""
