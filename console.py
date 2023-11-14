@@ -2,13 +2,15 @@
 """ module for interactive console """
 
 import cmd
+from models.base_model import BaseModel
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """interactive console cmd """
 
     prompt = "(hbnb) "
-    myInstances = ["BaseModel", "User"]
+    myInstances = {"BaseModel": BaseModel, "User": User}
 
     def do_create(slef, line):
         """create new instance"""
@@ -20,8 +22,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         print(myClass)
-        """newIns = myClass()
-        print("class: {}, id: {}".format(myClass, newIns.id))"""
+        newIns = HBNBCommand.myInstances[myClass]()
+        print("class: {}, id: {}".format(myClass, newIns.id))
 
     def do_EOF(self, line):
         """exit from sonsole"""
