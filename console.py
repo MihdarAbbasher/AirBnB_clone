@@ -45,9 +45,9 @@ class HBNBCommand(cmd.Cmd):
         print(key)
         for k in items:
             if key == k:
-                print("found")
-                break
-        print("out loop")
+                print(items[k])
+                return
+        print("** no instance found **")
 
     def do_help(self, line):
         """show general or specific help"""
