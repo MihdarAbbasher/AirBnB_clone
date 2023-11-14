@@ -4,6 +4,7 @@
 import cmd
 from models.base_model import BaseModel
 from models.user import User
+from models.engine.file_storage import FileStorage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -21,13 +22,27 @@ class HBNBCommand(cmd.Cmd):
         if myClass not in HBNBCommand.myInstances:
             print("** class doesn't exist **")
             return
-        print(myClass)
         newIns = HBNBCommand.myInstances[myClass]()
-        print("class: {}, id: {}".format(myClass, newIns.id))
+        print(newIns.id)
 
     def do_EOF(self, line):
         """exit from sonsole"""
         return True
+
+    def do_EOF(self, line):
+        """exit from sonsole"""
+        if not line:
+            print("** class name missing **")
+            return
+        myline = line.split(" ")
+        if myline[0] not in HBNBCommand.myInstances:
+            print("** class doesn't exist **")
+            return
+        if len(myline) < 2:
+            print("** instance id missing **")
+            return
+        for k in FileStorage.__objects:
+            print("key: {}".format(k))
 
     def do_help(self, line):
         """show general or specific help"""
