@@ -42,10 +42,30 @@ class HBNBCommand(cmd.Cmd):
             return
         items = FileStorage().all()
         key = myline[0] + "." + myline[1]
-        print(key)
         for k in items:
             if key == k:
                 print(items[k])
+                return
+        print("** no instance found **")
+
+    def do_destroy(self, line):
+        """delete instance and save"""
+        if not line:
+            print("** class name missing **")
+            return
+        myline = line.split(" ")
+        if myline[0] not in HBNBCommand.myInstances:
+            print("** class doesn't exist **")
+            return
+        if len(myline) < 2:
+            print("** instance id missing **")
+            return
+        items = FileStorage().all()
+        key = myline[0] + "." + myline[1]
+        for k in items:
+            if key == k:
+                del (items[k])
+                storage.save()
                 return
         print("** no instance found **")
 
