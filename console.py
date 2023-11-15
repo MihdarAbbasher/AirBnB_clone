@@ -85,6 +85,21 @@ class HBNBCommand(cmd.Cmd):
         """
         pass
 
+    def do_all(self, line):
+        """show all instances"""
+        items = storage.all()
+        if not line:
+            for k in items:
+                print(items[k])
+            return
+        myline = line.split(" ")
+        if myline[0] not in HBNBCommand.myInstances:
+            print("** class doesn't exist **")
+            return
+        for k in items:
+            print(k)
+
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
