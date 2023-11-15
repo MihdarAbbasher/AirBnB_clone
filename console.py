@@ -4,7 +4,7 @@
 import cmd
 from models.base_model import BaseModel
 from models.user import User
-from models.engine.file_storage import FileStorage
+from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """interactive console cmd """
@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         if len(myline) < 2:
             print("** instance id missing **")
             return
-        items = FileStorage().all()
+        items = storage.all()
         key = myline[0] + "." + myline[1]
         for k in items:
             if key == k:
@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
         if len(myline) < 2:
             print("** instance id missing **")
             return
-        items = FileStorage().all()
+        items = storage.all()
         key = myline[0] + "." + myline[1]
         for k in items:
             if key == k:
