@@ -5,12 +5,19 @@ import cmd
 from models.base_model import BaseModel
 from models.user import User
 from models import storage
+from models.state import State
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
+from models.place import Place
+
 
 class HBNBCommand(cmd.Cmd):
     """interactive console cmd """
 
     prompt = "(hbnb) "
-    myInstances = {"BaseModel": BaseModel, "User": User}
+    myInstances = {"BaseModel": BaseModel, "User": User, "City": City, "State": State, "Place": Place, "Review": Review,
+    "Amenity": Amenity}
 
     def do_create(slef, line):
         """create new instance"""
@@ -97,7 +104,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         for k in items:
-            print(k)
+            if isinstance(items[k], HBNBCommand.myInstances[myline[0]]):
+                print(items[k])
 
 
 

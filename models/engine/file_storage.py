@@ -3,6 +3,12 @@
 import json
 import os
 from models.base_model import BaseModel
+from models.user import User
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 
 
 class FileStorage:
@@ -18,6 +24,7 @@ class FileStorage:
         """set in __objects"""
         k = "{}.{}".format(type(obj).__name__, obj.id)
         FileStorage.__objects[k] = obj
+        self.save()
 
     def save(self):
         """
@@ -31,7 +38,8 @@ class FileStorage:
         """
         deserializes the JSON file to __objects dict,
         if the JSON file is exist"""
-        my_classes = {'BaseModel': BaseModel}
+        my_classes = {"BaseModel": BaseModel, "User": User, "City": City, "State": State, "Place": Place, "Review": Review,
+    "Amenity": Amenity}
 
         if os.path.exists(FileStorage.__file_path):
             with open(FileStorage.__file_path, 'r') as f:
